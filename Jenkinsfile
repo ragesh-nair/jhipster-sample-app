@@ -24,7 +24,7 @@ pipeline {
             steps {
                 unstash 'ws'
                 sh 'mvn -B -DskipTests=true clean compile package'
-                stash name: 'war', includes: 'target/**/*'
+                stash name: 'war', includes: '\'target/**/*\', \'docker/Dockerfile\''
             }
         }
         stage('Test Backend') {
@@ -105,8 +105,8 @@ pipeline {
                 }
             }
             steps {
-                unstash 'ws'
                 unstash 'war'
+                sh 'cp target/jhipster-sample-application-*.war docker/'
                 script {
                   rwasp.push (docker.build("tech-talk/jhipster-sample:$REL_VERSION", 'docker'))
                   Map config = [
