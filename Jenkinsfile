@@ -105,8 +105,9 @@ pipeline {
                 }
             }
             steps {
+                unstash 'ws'
                 unstash 'war'
-                sh '. target/scripts/deploy.sh staging -v $REL_VERSION -u $STAGING_AUTH_USR -p $STAGING_AUTH_PSW'
+                rwasp.push (docker.build("tech-talk/jhipster-sample:$REL_VERSION", 'target')
             }
             //Post: Send notifications; hipchat, slack, send email etc.
         }
