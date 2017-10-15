@@ -114,7 +114,7 @@ pipeline {
 	                 ENV : 'stg-rwasp',
                    IMAGE : "tech-talk/jhipster-sample:$REL_VERSION",
                    Deploy_LOCAL_ENV_CONF : 'rwasp/stg-rwasp/env.json',
-                   Deploy_LOCAL_RUN_CONF : 'rwasp/stg-rwasp/runtime.json',
+                   Deploy_LOCAL_RUN_CONF : 'rwasp/stg-rwasp/runtime.conf',
                    Switch_DOMAIN : 'tech-talk-jhipster.rwasp-stg.hnd2.bdd.local'
                    ]
                    rwaspDeployTest (config)
