@@ -108,7 +108,13 @@ pipeline {
                 unstash 'ws'
                 unstash 'war'
                 script {
-                  rwasp.push (docker.build("tech-talk/jhipster-sample:$REL_VERSION", 'target'))
+                  rwasp.push (docker.build("tech-talk/jhipster-sample:$REL_VERSION", 'docker'))
+                  Map config = [
+	                 ENV : 'stg-rwasp',
+                   IMAGE : "tech-talk/jhipster-sample:$REL_VERSION",
+                   COMP_NAME : 'default'
+                   ]
+                   rwaspDeploy (config)
                 }
             }
             //Post: Send notifications; hipchat, slack, send email etc.
