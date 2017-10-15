@@ -113,9 +113,11 @@ pipeline {
                   Map config = [
 	                 ENV : 'stg-rwasp',
                    IMAGE : "tech-talk/jhipster-sample:$REL_VERSION",
-                   COMP_NAME : 'default'
+                   COMP_NAME : 'default',
+                   Switch_DOMAIN : 'tech-talk-jhipster.rwasp-stg.hnd2.bdd.local'
                    ]
                    rwaspDeploy (config)
+                   rwaspSwitch (config)
                 }
             }
             //Post: Send notifications; hipchat, slack, send email etc.
