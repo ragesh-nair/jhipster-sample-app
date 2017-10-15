@@ -17,8 +17,8 @@ pipeline {
         stage('Build Backend') {
             agent {
                 docker {
-                    image 'maven:3-alpine'
-                    args '-v $HOME/.m2:/root/.m2'
+		    image 'rwasp-docker.prod.jp.local/tech-talk/rwasp-mvn3:1.0.1'
+                    args '-v $HOME/.m2:/home/jenkins/.m2'
                 }
             }
             steps {
@@ -30,8 +30,8 @@ pipeline {
         stage('Test Backend') {
             agent {
                 docker {
-                    image 'maven:3-alpine'
-                    args '-v $HOME/.m2:/root/.m2'
+		    image 'rwasp-docker.prod.jp.local/tech-talk/rwasp-mvn3:1.0.1'
+                    args '-v $HOME/.m2:/home/jenkins/.m2'
                 }
             }
             steps {
@@ -81,8 +81,8 @@ pipeline {
                     }
                     agent {
                         docker {
-                            image 'maven:3-alpine'
-                            args '-v $HOME/.m2:/root/.m2'
+			    image 'rwasp-docker.prod.jp.local/tech-talk/rwasp-mvn3:1.0.1'
+			    args '-v $HOME/.m2:/home/jenkins/.m2'
                         }
                     }
                     steps {
