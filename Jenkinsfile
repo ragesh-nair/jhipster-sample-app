@@ -113,10 +113,11 @@ pipeline {
                   Map config = [
 	                 ENV : 'stg-rwasp',
                    IMAGE : "tech-talk/jhipster-sample:$REL_VERSION",
-                   COMP_NAME : 'default',
+                   Deploy_LOCAL_ENV_CONF : 'rwasp/stg-rwasp/env.json',
+                   Deploy_LOCAL_RUN_CONF : 'rwasp/stg-rwasp/runtime.json',
                    Switch_DOMAIN : 'tech-talk-jhipster.rwasp-stg.hnd2.bdd.local'
                    ]
-                   rwaspDeploy (config)
+                   rwaspDeployTest (config)
                    rwaspSwitch (config)
                 }
             }
