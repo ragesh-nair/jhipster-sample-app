@@ -117,7 +117,7 @@ pipeline {
                    Deploy_LOCAL_RUN_CONF : 'rwasp/stg-rwasp/runtime.conf',
                    Switch_DOMAIN : 'tech-talk-jhipster.rwasp-stg.hnd2.bdd.local'
                    ]
-                   rwaspDeployTest (config)
+                   rwaspDeployV2 (config)
                    rwaspSwitch (config)
                 }
             }
