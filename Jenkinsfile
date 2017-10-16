@@ -159,8 +159,9 @@ pipeline {
     }
     post {
       always {
-        deleteDir()
-        hipchatNotify.completed "RMSg Test", RMSg_Test, currentBuild.result
+        script {
+          hipchatNotify.completed "RMSg Test", "RMSg_Test", currentBuild.result
+        }
       }
       success {
         echo "Do stuffs on success"
