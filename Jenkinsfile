@@ -157,5 +157,16 @@ pipeline {
             }
         }
     }
-    //Post: notifications; hipchat, slack, send email etc.
+    post {
+      always {
+        deleteDir()
+        hipchatNotify.completed "RMSg Test", RMSg_Test, currentBuild.result
+      }
+      success {
+        echo "Do stuffs on success"
+      }
+      failure {
+        echo "Do stuffs on failure"
+      }
+    }
 }
