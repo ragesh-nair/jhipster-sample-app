@@ -3,7 +3,9 @@ pipeline {
   options {
     skipDefaultCheckout()
   }
-
+  parameters {
+    string(name: 'BRANCH_NAME', defaultValue: 'develop', description: 'What branch to build?')
+  }
   environment {
     REL_VERSION = "${BRANCH_NAME.contains('release-') ? BRANCH_NAME.drop(BRANCH_NAME.lastIndexOf('-')+1) + '.' + BUILD_NUMBER : 'SNAPSHOT-' + BUILD_NUMBER}"
     IMAGE = "tech-talk/jhipster-sample:$REL_VERSION"
